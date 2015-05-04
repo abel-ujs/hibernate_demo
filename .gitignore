@@ -1,5 +1,6 @@
 /target/
 
+.springBeans
 *.pydevproject
 .metadata
 .gradle

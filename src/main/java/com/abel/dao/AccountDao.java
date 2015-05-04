@@ -10,7 +10,7 @@ public interface AccountDao {
 	
 	public List<Account> getAllAccounts();
 	
-	public void save(Account account);
+	public long save(Account account);
 	
 	public void delete(Account account);
 	

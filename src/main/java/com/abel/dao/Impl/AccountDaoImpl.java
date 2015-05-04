@@ -28,9 +28,9 @@ public class AccountDaoImpl implements AccountDao {
 		return (Account)getSession().get(Account.class, id);
 	}
 
-	public void save(Account account) {
+	public long save(Account account) {
 		
-		getSession().save(account);
+		return (Long)getSession().save(account);
 	}
 
 	public void delete(Account account) {
