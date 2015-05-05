@@ -11,8 +11,14 @@
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
 	
-	<context:property-placeholder location="classpath*:app.properties"/>
-	
 	<import resource="db.xml" />
-	
+	<beans profile="test">
+		<context:property-placeholder location="classpath*:app-test.properties"/>
+	</beans>
+	<beans profile="production">
+		<context:property-placeholder location="classpath*:app-production.properties"/>
+	</beans>
+	<beans profile="development">
+		<context:property-placeholder location="classpath*:app-development.properties"/>
+	</beans>
 </beans>

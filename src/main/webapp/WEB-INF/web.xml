@@ -4,20 +4,20 @@
 
 <web-app>
 	<display-name>Archetype Created Web Application</display-name>
-
-	<!-- The definition of the Root Spring Container shared by all Servlets 
-		and Filters -->
+	
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath*:spring.xml</param-value>
 	</context-param>
-
-	<!-- Creates the Spring Container shared by all Servlets and Filters -->
+	<context-param>
+		<param-name>spring.profiles.active</param-name>
+		<param-value>development</param-value>
+	</context-param>
+	
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
-	<!-- Processes application requests -->
 	<servlet>
 		<servlet-name>dispatcher</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -30,7 +30,6 @@
 
 	<servlet-mapping>
 		<servlet-name>dispatcher</servlet-name>
-		<!-- <url-pattern>*.do</url-pattern> -->
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 </web-app>
