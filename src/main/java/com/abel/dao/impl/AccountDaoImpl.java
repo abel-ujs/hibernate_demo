@@ -1,4 +1,4 @@
-package com.abel.dao.Impl;
+package com.abel.dao.impl;
 
 import java.util.List;
 
