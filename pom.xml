@@ -153,6 +153,12 @@
 		</dependency>
 
 		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.4</version>
+		</dependency>
+
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.11</version>
@@ -186,12 +192,8 @@
 					<ajpPort>8009</ajpPort>
 					<useTestClasspath>true</useTestClasspath>
 					<contextReloadable>true</contextReloadable>
-					<!--  
-					<systemProperties>
-						<JAVA_OPTS>-Xms512m -Xmx1024m -XX:MaxPermSize=1024m</JAVA_OPTS>
-						<log4j.debug>true</log4j.debug>
-					</systemProperties>
-					-->
+					<!-- <systemProperties> <JAVA_OPTS>-Xms512m -Xmx1024m -XX:MaxPermSize=1024m</JAVA_OPTS> 
+						<log4j.debug>true</log4j.debug> </systemProperties> -->
 				</configuration>
 			</plugin>
 
