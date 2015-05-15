@@ -12,7 +12,7 @@ import org.springframework.http.HttpRequest;
 
 /**
  * @ClassName: Page
- * @Description: TODO
+ * @Description: bootstrap风格分页
  * @author abel_ujs@163.com
  * @date 2015年5月12日 下午8:44:46
  * @param <T>
