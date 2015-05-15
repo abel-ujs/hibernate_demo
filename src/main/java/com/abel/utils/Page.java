@@ -159,7 +159,7 @@ public class Page<T> {
 				+ "</a><li>\n");
 		sb.insert(0, "<nav><ul class=\"pagination\">\n").append("</ul></nav>\n");
 		sb.append("<div style=\"clear:both;\"></div>");
-		return "Page []";
+		return sb.toString();
 	}
 
 	private void init() {
