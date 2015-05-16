@@ -30,7 +30,7 @@ public class Page<T> {
 	 * 
 	 * @Fields pageSize : TODO
 	 */
-	private int pageSize = 10;
+	private int pageSize = 2;
 
 	private int pre;
 
@@ -39,6 +39,8 @@ public class Page<T> {
 	private int first;
 
 	private int last;
+	
+	private int firstIndex;
 
 	/**
 	 * @Fields length : 分页宽度
@@ -117,9 +119,9 @@ public class Page<T> {
 		}
 		if (begin > first) {
 			int i = 0;
-			for (i = first; i < i + slider - 1; i++) {
+			for (i = first; i <first + slider; i++) {
 				sb.append("<li><a href=\"javascript:\" onclick=\"" + funcName
-						+ "(" + i + "," + pageSize + ");" + ">" + i
+						+ "(" + i + "," + pageSize + ");\">"  + i
 						+ "</a></li>");
 			}
 			if (i < begin) {
@@ -155,8 +157,8 @@ public class Page<T> {
 					+ next + "," + pageSize + ");\">下一页 &#187;</a></li>\n");
 		}
 
-		sb.append("共 " + total + " 条" + (message != null ? message : "")
-				+ "</a><li>\n");
+		sb.append("<li><a href=\"javascript:\">共 " + total + " 条" + (message != null ? message : "")
+				+ "</a></li>\n");
 		sb.insert(0, "<nav><ul class=\"pagination\">\n").append("</ul></nav>\n");
 		sb.append("<div style=\"clear:both;\"></div>");
 		return sb.toString();
@@ -285,6 +287,31 @@ public class Page<T> {
 
 	public void setLast(boolean isLast) {
 		this.isLast = isLast;
+	}
+
+	public int getFirstIndex() {
+		int firstIndex=pageSize*(pageNo-1);
+		return firstIndex;
+	}
+
+	public void setFirstIndex(int firstIndex) {
+		this.firstIndex = firstIndex;
+	}
+
+	public int getLength() {
+		return length;
+	}
+
+	public void setLength(int length) {
+		this.length = length;
+	}
+
+	public int getSlider() {
+		return slider;
+	}
+
+	public void setSlider(int slider) {
+		this.slider = slider;
 	}
 
 }

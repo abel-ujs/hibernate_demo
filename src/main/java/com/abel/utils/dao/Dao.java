@@ -3,6 +3,8 @@ package com.abel.utils.dao;
 import java.io.Serializable;
 import java.util.LinkedHashMap;
 
+import com.abel.utils.Page;
+
 
 /** 
 * @ClassName: Dao 
@@ -80,4 +82,8 @@ public interface Dao<T> {
 	* @throws 
 	*/
 	public QueryResult<T> getScrollData(int firstIndex,int maxResult,String whereHql,Object[] params,LinkedHashMap<String,String> orderBy);
+
+
+	public QueryResult<T> getScrollData(int firstIndex,int maxResult);
+	
 }

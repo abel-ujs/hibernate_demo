@@ -25,5 +25,11 @@ public class Student {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
 	
 }

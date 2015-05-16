@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.persistence.EmbeddedId;
@@ -73,10 +74,11 @@ public class DaoSupport<T> implements Dao<T> {
 		String queryString = "select o from "+getEntityName()+" o "+( whereHql==null || "".equals(whereHql)?"":" where "+whereHql)
 				+getOrderByHql(orderBy);
 		Query query = hibernateUtil.getSession().createQuery(queryString);
-		query.setFirstResult(firstIndex - 1);
+		query.setFirstResult(firstIndex );
 		query.setMaxResults(maxResult);
 		QueryResult<T> qr = new QueryResult<T>();
-		qr.setResultList(query.list());
+		qr.setResult(query.list());
+		qr.setTotal((int) getCount());
 		return qr;
 	}
 
@@ -153,6 +155,10 @@ public class DaoSupport<T> implements Dao<T> {
 
 		}
 		return entityName;
+	}
+
+	public QueryResult<T> getScrollData(int firstIndex, int maxResult) {
+		return this.getScrollData(firstIndex, maxResult,null,null,null);
 	}
 
 }
