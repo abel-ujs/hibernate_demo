@@ -83,7 +83,10 @@ public interface Dao<T> {
 	*/
 	public QueryResult<T> getScrollData(int firstIndex,int maxResult,String whereHql,Object[] params,LinkedHashMap<String,String> orderBy);
 
-
+	public Page<T> getPage(Page<T> page,String whereHql,Object[] params,LinkedHashMap<String,String> orderBy);
+	
+	public Page<T> getPage(Page<T> page);
+	
 	public QueryResult<T> getScrollData(int firstIndex,int maxResult);
 	
 }

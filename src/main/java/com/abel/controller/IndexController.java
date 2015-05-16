@@ -24,13 +24,17 @@ public class IndexController {
 	
 	@RequestMapping("/")
 	public String index(HttpServletRequest req,HttpServletResponse res,Model model){
-		Page<Student> page = new Page<Student>(req,res);
+		
+		/*Page<Student> page = new Page<Student>(req,res);
 		QueryResult<Student> data = studentDao.getScrollData(page.getFirstIndex(), page.getPageSize());
 		page.setResult(data.getResult());
 		page.setTotal(data.getTotal());
 		model.addAttribute("page", page);
 		model.addAttribute("message","test");
-		logger.debug("page-->"+page);
+		logger.debug("page-->"+page);*/
+		
+		Page<Student> page = studentDao.getPage(new Page<Student>(req,res));
+		model.addAttribute("page", page);
 		return "index";
 	}
 	

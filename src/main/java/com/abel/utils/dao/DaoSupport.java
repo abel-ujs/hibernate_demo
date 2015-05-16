@@ -6,7 +6,6 @@ import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.persistence.EmbeddedId;
@@ -16,6 +15,7 @@ import org.hibernate.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.abel.utils.Page;
 import com.abel.utils.Reflections;
 
 /**
@@ -80,6 +80,26 @@ public class DaoSupport<T> implements Dao<T> {
 		qr.setResult(query.list());
 		qr.setTotal((int) getCount());
 		return qr;
+	}
+	
+	public Page<T> getPage(Page<T> page,String whereHql,Object[] params,LinkedHashMap<String,String> orderBy){
+		String queryString = "select o from "+getEntityName()+" o "+( whereHql==null || "".equals(whereHql)?"":" where "+whereHql)
+				+getOrderByHql(orderBy);
+		Query query = hibernateUtil.getSession().createQuery(queryString);
+		query.setFirstResult(page.getFirstIndex() );
+		query.setMaxResults(page.getPageSize());
+		if(params!=null && params.length>0){
+			int i=1;
+			for(Object o: params){
+				query.setParameter(i++, o);
+			}
+		}
+		page.setTotal(getCount());
+		page.setResult(query.list());
+		return page;
+	}
+	public Page<T> getPage(Page<T> page){
+		return getPage(page,null,null,null);
 	}
 
 	private String getOrderByHql(HashMap<String ,String> orderBy){
